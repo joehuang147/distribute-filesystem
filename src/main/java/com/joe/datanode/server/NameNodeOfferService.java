@@ -28,7 +28,7 @@ public class NameNodeOfferService {
     /**
      * 通信主键
      */
-    public void run(){
+    public void start(){
         register();
     }
 
@@ -65,6 +65,13 @@ public class NameNodeOfferService {
         while (iterator.hasNext()){
             iterator.next();
         }
+    }
+
+//    public
+
+    private void heartBeat(){
+        this.activeNameNodeServiceActor.heartBeat();
+        this.standbyNameNodeServiceActor.heartBeat();
     }
 
 

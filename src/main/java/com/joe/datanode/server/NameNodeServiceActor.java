@@ -16,6 +16,10 @@ public class NameNodeServiceActor {
         registerThread.start();
     }
 
+    public void heartBeat(){
+        new HeartBeatTherad().start();
+    }
+
     /**
      * 注册线程类
      */
@@ -31,7 +35,10 @@ public class NameNodeServiceActor {
         @Override
         public void run() {
             try{
-                System.out.println("准备向NameNode进行注册...");
+                System.out.println("准备向NameNode发送rpc注册...");
+                String ip = "127.0.0.1";
+                String hostName = "dfs-data-01";
+
                 Thread.sleep(1000L);
                 System.out.println("完成注册...");
                 //发送注册完成的信号
@@ -40,6 +47,21 @@ public class NameNodeServiceActor {
                 e.printStackTrace();
             }
 
+        }
+    }
+
+    class HeartBeatTherad extends Thread{
+        @Override
+        public void run() {
+            while (true){
+                try {
+                    String ip = "127.0.0.1";
+                    String hostName = "dfs-data-01";
+                    Thread.sleep(1000L);
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

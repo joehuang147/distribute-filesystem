@@ -11,6 +11,8 @@ public class NameNode extends Thread{
     private FsNameSystem fsNameSystem;
     //接收rpc调用对象
     private NameNodeRpcServer nameNodeRpcServer;
+    //负责管理datanode
+    private DataNodeManager dataNodeManager;
 
     public NameNode(){
         shutRun = true;
@@ -21,7 +23,8 @@ public class NameNode extends Thread{
      */
     public void init(){
         this.fsNameSystem = new FsNameSystem();
-        this.nameNodeRpcServer = new NameNodeRpcServer(fsNameSystem);
+        this.dataNodeManager = new DataNodeManager();
+        this.nameNodeRpcServer = new NameNodeRpcServer(fsNameSystem,dataNodeManager);
     }
 
     @Override

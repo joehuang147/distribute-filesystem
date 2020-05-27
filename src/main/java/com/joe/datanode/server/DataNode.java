@@ -14,11 +14,11 @@ public class DataNode {
         shouldRun = true;
         //调用通信组件执行方法
         nameNodeGroupOfferService = new NameNodeOfferService();
-        nameNodeGroupOfferService.run();
+        nameNodeGroupOfferService.start();
     }
 
     /**
-     * DataNode运行
+     * DataNode运行，除非shouldRun为false
      */
     public void run(){
         while (shouldRun){
